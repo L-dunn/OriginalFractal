@@ -1,27 +1,25 @@
-public static final int MAX_SIDE = 600;
-public static final int MIN_SIDE = 80;
-
+public static final int MAX_SIDE = 700;
+public static final int MIN_SIDE = 10;
+int r = 0;
 
 public void setup(){
   size(800, 800);
   rectMode(CENTER);
-  //for(int i = 0; i < 5; i++){
-  //  rect(400, 400, 100, 100);
-  //  rotate(radians(30));
-  //}
 }
 
 public void draw(){
-  myFractal(400, 400, MAX_SIDE);
+  background(0,0,0);
+  translate(400, 400);
+  myFractal(0, 0, MAX_SIDE, MAX_SIDE);
 }
 
-public void myFractal(int x, int y, int s){
+public void myFractal(int x, int y, float s, float r){
   if(s <= MIN_SIDE){
-   rect(x, y, MIN_SIDE, MIN_SIDE);
+    rect(x, y, MIN_SIDE, MIN_SIDE);
+    rotate(radians(r));
   }else{
-    //rotate(PI/6.0);
     rect(x, y, s, s);
-    //rotate(-1*PI/6.0);
-    myFractal(x, y, s-40);
+    rotate(radians(r));
+    myFractal(x, y, s*0.95, r+7);
   }
 }
